@@ -16,13 +16,5 @@
 * 类似Toast的新控件Snackbar的用法。
 
 
-> 在源码中学习Android，是有种身临其境的感觉的。
 
-> 整个Demo的源码我放在了GitHub上，谢谢star一下~
-> 在看源码过程中如果发现什么问题，请在留言，看到一定回复。
 
-> 源码地址：
-> [michaelutil](https://github.com/git0pen/michaelutil)
-
-> 博文地址：
-> [michaelutil](http://sunjiajia.com/2015/07/02/android-new-widgets-demo/)# MichaelUtil
