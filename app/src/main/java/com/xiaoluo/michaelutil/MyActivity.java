@@ -1,5 +1,6 @@
 package com.xiaoluo.michaelutil;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -36,6 +37,7 @@ public class MyActivity extends AppCompatActivity implements ViewPager.OnPageCha
     private ViewPager mViewPager;
     private FloatingActionButton mFloatingActionButton;
     private NavigationView mNavigationView;
+    private Context mContext;
     // TabLayout中的tab标题
     private String[] mTitles;
     // 填充到ViewPager中的Fragment

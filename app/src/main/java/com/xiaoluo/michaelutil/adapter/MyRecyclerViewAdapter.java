@@ -38,6 +38,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewHo
     public List<String> mDatas;
     public LayoutInflater mLayoutInflater;
 
+
     public MyRecyclerViewAdapter(Context mContext) {
         this.mContext = mContext;
         mLayoutInflater = LayoutInflater.from(mContext);
