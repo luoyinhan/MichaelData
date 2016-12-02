@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xiaoluo.michaelutil.activity.CircleImageViewActivity;
+import com.xiaoluo.michaelutil.activity.GifviewActivity;
 import com.xiaoluo.michaelutil.activity.RoundProgressBarActivity;
 import com.xiaoluo.michaelutil.activity.SwitcherViewActivity;
 import com.xiaoluo.michaelutil.adapter.MyRecyclerViewAdapter;
@@ -129,6 +130,9 @@ public class MyFragment extends Fragment implements SwipeRefreshLayout.OnRefresh
                 break;
             case 2://垂直滚动TextView
                 intent.setClass(getActivity(), SwitcherViewActivity.class);
+                break;
+            case 3://gif图片展示
+                intent.setClass(getActivity(), GifviewActivity.class);
                 break;
         }
         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {

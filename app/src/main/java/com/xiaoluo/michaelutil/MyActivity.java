@@ -184,7 +184,6 @@ public class MyActivity extends AppCompatActivity implements ViewPager.OnPageCha
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
     }
 
     @Override

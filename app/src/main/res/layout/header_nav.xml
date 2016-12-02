@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="220dp"
-    android:background="@drawable/ic_user_background"
-    android:gravity="center"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="220dp"
+              android:background="@drawable/ic_user_background"
+              android:gravity="center"
+              android:orientation="vertical">
 
-    <com.xiaoluo.michaelutil.view.RoundedImageView
+    <com.xiaoluo.michaelutil.widght.RoundedImageView
         android:id="@+id/id_header_face"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:scaleType="fitXY"
-        android:src="@drawable/author" />
+        android:src="@drawable/author"/>
 
     <TextView
         android:id="@+id/id_header_authorname"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@string/header_author_name"
         android:textColor="@android:color/black"
-        android:textSize="16sp" />
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/id_header_url"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="@string/header_author_url"
         android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"/>
 
 
 </LinearLayout>
