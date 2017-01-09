@@ -29,7 +29,5 @@ public class SwitcherViewActivity extends AppCompatActivity {
         params.gravity = Gravity.CENTER_HORIZONTAL;
         params.topMargin = 50;
         addContentView(switcherView, params);
-
-
     }
 }

@@ -2,6 +2,7 @@ package com.xiaoluo.michaelutil.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +39,6 @@ public class CommonUtil {
      * @return
      */
     public static String GetNetworkType(Context context) {
-
         String strNetworkType = "";
         NetworkInfo networkInfo = ((ConnectivityManager) context.getSystemService(Context
                 .CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
@@ -47,7 +49,6 @@ public class CommonUtil {
             } else if (networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
                 String _strSubTypeName = networkInfo.getSubtypeName();
                 Log.e("cocos2d-x", "Network getSubtypeName : " + _strSubTypeName);
-
                 // TD-SCDMA   networkType is 17
                 networkType = networkInfo.getSubtype();
                 switch (networkType) {
@@ -82,7 +83,6 @@ public class CommonUtil {
                         }
                         break;
                 }
-
                 Log.e("cocos2d-x", "Network getSubtype : " + Integer.valueOf(networkType).toString());
             }
         }
@@ -125,12 +125,12 @@ public class CommonUtil {
      * @param time
      * @return String
      */
-    public static String getDate(String style, String time) {
+    public static String getDate(String style, long time) {
         if (style == null) {
             return "";
         }
         SimpleDateFormat sdf = new SimpleDateFormat(style, Locale.CHINA);
-        return sdf.format(new Date(Long.parseLong(time)));
+        return sdf.format(new Date(time));
     }
 
     /**
@@ -177,6 +177,12 @@ public class CommonUtil {
         }
     }
 
+    /**
+     * 获取mac地址
+     *
+     * @param context
+     * @return
+     */
     public static String getWifiMac(Context context) {
         WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         WifiInfo info = wifi.getConnectionInfo();
@@ -196,5 +202,25 @@ public class CommonUtil {
         context.startActivity(intent);
     }
 
-
+    /**
+     * 获取资源文件
+     *
+     * @param fileName
+     * @return
+     */
+    public static String getFromAssets(String fileName, Application context) {
+        try {
+            InputStreamReader inputReader = new InputStreamReader(context.getResources().getAssets().open(fileName));
+            BufferedReader bufReader = new BufferedReader(inputReader);
+            String line = "";
+            StringBuilder Result = new StringBuilder();
+            while ((line = bufReader.readLine()) != null) {
+                Result.append(line);
+            }
+            return Result.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }

@@ -22,6 +22,8 @@ import com.xiaoluo.michaelutil.adapter.MyRecyclerViewAdapter;
 import com.xiaoluo.michaelutil.adapter.MyStaggeredViewAdapter;
 import com.xiaoluo.michaelutil.utils.SnackbarUtil;
 
+import java.util.HashMap;
+
 /**
  * Created by Monkey on 2015/6/29.
  */
@@ -40,7 +42,7 @@ public class MyFragment extends Fragment implements SwipeRefreshLayout.OnRefresh
     private static final int STAGGERED_GRID = 4;
     private static final int SPAN_COUNT = 2;
     private int flag = 0;
-
+    HashMap<String, String> mMap = new HashMap<>();
 
     @Nullable
     @Override

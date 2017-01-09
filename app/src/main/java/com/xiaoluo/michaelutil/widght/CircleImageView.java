@@ -17,7 +17,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-
 import com.xiaoluo.michaelutil.R;
 
 
@@ -54,7 +53,6 @@ public class CircleImageView extends ImageView {
 
     public CircleImageView(Context context) {
         super(context);
-
         init();
     }
 
