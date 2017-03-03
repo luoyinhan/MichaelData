@@ -17,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
 import com.xiaoluo.michaelutil.R;
 
 
@@ -207,11 +208,9 @@ public class CircleImageView extends ImageView {
             mSetupPending = true;
             return;
         }
-
         if (mBitmap == null) {
             return;
         }
-
         mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
         mBitmapPaint.setAntiAlias(true);

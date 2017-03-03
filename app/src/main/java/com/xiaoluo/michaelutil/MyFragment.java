@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.xiaoluo.michaelutil.activity.CarlenderActivity;
 import com.xiaoluo.michaelutil.activity.CircleImageViewActivity;
 import com.xiaoluo.michaelutil.activity.GifviewActivity;
 import com.xiaoluo.michaelutil.activity.RoundProgressBarActivity;
@@ -95,7 +96,6 @@ public class MyFragment extends Fragment implements SwipeRefreshLayout.OnRefresh
             mStaggeredAdapter.setOnItemClickListener(this);
             mRecyclerView.setAdapter(mStaggeredAdapter);
         }
-
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
 
@@ -121,7 +121,7 @@ public class MyFragment extends Fragment implements SwipeRefreshLayout.OnRefresh
 
     @Override
     public void onItemClick(View view, int position) {
-        SnackbarUtil.show(mRecyclerView, getString(com.xiaoluo.michaelutil.R.string.item_clicked), 0);
+//        SnackbarUtil.show(mRecyclerView, getString(com.xiaoluo.michaelutil.R.string.item_clicked), 0);
         Intent intent = new Intent();
         switch (position) {
             case 0://半圆形进度
@@ -135,6 +135,9 @@ public class MyFragment extends Fragment implements SwipeRefreshLayout.OnRefresh
                 break;
             case 3://gif图片展示
                 intent.setClass(getActivity(), GifviewActivity.class);
+                break;
+            case 4://自定义日历控件
+                intent.setClass(getActivity(), CarlenderActivity.class);
                 break;
         }
         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {

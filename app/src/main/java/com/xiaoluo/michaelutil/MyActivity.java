@@ -73,10 +73,8 @@ public class MyActivity extends AppCompatActivity implements ViewPager.OnPageCha
     }
 
     private void configViews() {
-
         // 设置显示Toolbar
         setSupportActionBar(mToolbar);
-
         // 设置Drawerlayout开关指示器，即Toolbar最左边的那个icon
         ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, com.xiaoluo.michaelutil.R.string.open, com.xiaoluo.michaelutil.R
                 .string.close);
