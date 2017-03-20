@@ -20,8 +20,7 @@ public class MyClass {
             System.out.print(j % 2);
         }
         try {
-            DatagramSocket socket=new DatagramSocket(8080);
-        } catch (SocketException e) {
+            DatagramSocket socket=new DatagramSocket(8080);        } catch (SocketException e) {
             e.printStackTrace();
         }
 
