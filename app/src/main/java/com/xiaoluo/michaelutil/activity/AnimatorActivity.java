@@ -3,6 +3,8 @@ package com.xiaoluo.michaelutil.activity;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -20,6 +22,8 @@ public class AnimatorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animator);
 //        mCalenderView = new CircleCalendarView(this);
         initView();
+        HandlerThread thread = new HandlerThread("test");
+         new Handler(thread.getLooper());
     }
 
     private void initView() {

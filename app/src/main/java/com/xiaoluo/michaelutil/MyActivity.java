@@ -105,7 +105,6 @@ public class MyActivity extends AppCompatActivity implements ViewPager.OnPageCha
 
         // 设置FloatingActionButton的点击事件
         mFloatingActionButton.setOnClickListener(this);
-
     }
 
     /**
