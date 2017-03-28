@@ -121,8 +121,10 @@ android.libraryVariants.all { variant ->
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
-    user = "luoyinhan"
-    key = "170d7c960155902e517d28345985285b11014d8b"
+//    user = "luoyinhan"
+//    key = "170d7c960155902e517d28345985285b11014d8b"
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
     configurations = ['archives']
     pkg {
         repo = "maven"
