@@ -1,7 +1,5 @@
 package com.example;
 
-import java.net.DatagramSocket;
-import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -15,15 +13,11 @@ public class MyClass {
         System.out.println("a=" + intToByte4(a)[0]);
         int i = 3;
         System.out.println(i++ + "1");
-
-        for (int j = 1; j < 30; j++) {
-            System.out.print(j % 2);
-        }
-        try {
-            DatagramSocket socket=new DatagramSocket(8080);        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-
+        float fuel_cost = 0;
+        float fuel_left = 4.5f;
+        float fuel_left1 = 5.6f;
+        fuel_cost += (fuel_left - fuel_left1);
+        System.out.print(fuel_cost);
     }
 
     public static String getDate(String style, long time) {
@@ -43,5 +37,4 @@ public class MyClass {
         targets[0] = (byte) (i & 0xFF);
         return targets;
     }
-
 }
