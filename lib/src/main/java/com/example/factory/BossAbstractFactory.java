@@ -126,13 +126,12 @@ class BusinessDriver extends Driver3 {
     public AudiCar createAudiCar(String car) throws Exception {
         return new AudiBusinessCar();
     }
-
 }
 
 class test {
     /**
      * 抽象工厂模式的用意为：给客户端提供一个接口，可以创建多个产品族中的产品对象。
-     * 而且使用抽象工厂模式还要满足一下条件：
+     * 而且使用抽象工厂模式还要满足以下条件：
      * 1.系统中有多个产品族，而系统一次只可能消费其中一族产品
      * 2.同属于同一个产品族的产品以其使用。
      */

@@ -50,6 +50,11 @@ class Factory {
 
 //抽象工厂类
 abstract class IFactory {
+    public void createDo() {
+        IFruit f = this.create();
+        f.eat();
+    }
+
     abstract IFruit create();
 }
 
@@ -61,21 +66,33 @@ class MyFactory extends IFactory {
     }
 }
 
+class OrangeFactory extends IFactory {
+    @Override
+    IFruit create() {
+        return new Orange();
+    }
+}
+
 class Hello {
     public static void main(String[] args) {
         //通过反射 拿到相应的类   完整的包和类名
         //简单工厂模式
-        IFruit f = Factory.getInstance("com.example.factory.Orange");
+        /**
+         * 对象的创建和使用分离
+         */
+        IFruit f = Factory.getInstance("com.example.factory.Orange");//通过反射
         f.eat();
         /**
          * 工厂方法模式
+         *
+         *
          * 优点：使用开闭原则来分析下工厂方法模式。当有新的产品（即暴发户的汽车）产生时，只要按照抽象产品角色、抽象工厂角色提供的合同来生成，那么就可以被客户使用，
          * 而不必去修改任何已有的代码。（即当有新产品时，只要创建并基础抽象产品；新建具体工厂继承抽象工厂；而不用修改任何一个类）工厂方法模式是完全符合开闭原则的！
+         * 不用修改已有业务，只需添加相关的类 即可
          * 缺点:当产品种类非常多时，就会出现大量的与之对应的工厂类，这不应该是我们所希望的
          * 可以结合 简单工厂 和 工厂模式来处理
          */
-        IFactory factory = new MyFactory();
-        IFruit f1 = factory.create();
-        f1.eat();
+        IFactory factory = new OrangeFactory();
+        factory.createDo();
     }
 }

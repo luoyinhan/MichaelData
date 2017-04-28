@@ -19,7 +19,7 @@ public class CombineBeans {
     private TestModel combineSydwCore(TestModel sourceBean, TestModel targetBean) {
         Class sourceBeanClass = sourceBean.getClass();
         Class targetBeanClass = targetBean.getClass();
-        Field[] sourceFields = sourceBeanClass.getDeclaredFields();
+        Field[] sourceFields = sourceBeanClass.getDeclaredFields();//获取所有的属性
         Field[] targetFields = targetBeanClass.getDeclaredFields();
         for (int i = 0; i < sourceFields.length; i++) {
             Field sourceField = sourceFields[i];
@@ -29,7 +29,7 @@ public class CombineBeans {
             try {
                 //这个 只能是 基本数据类型
                 if (!(sourceField.get(sourceBean) == null) && !"serialVersionUID".equals(sourceField.getName().toString())) {
-                    targetField.set(targetBean, sourceField.get(sourceBean));
+                    targetField.set(targetBean, sourceField.get(sourceBean));//动态设置属性值   覆盖
                 }
             } catch (IllegalArgumentException | IllegalAccessException e) {
                 e.printStackTrace();
@@ -44,7 +44,7 @@ public class CombineBeans {
         TestModel targetModel = new TestModel();    //    第二个model对象
         sourceModel.setProp1("prop1");
         sourceModel.setProp2("prop2");
-        targetModel.setObj("b");
+        sourceModel.setObj("b");
         targetModel.setProp2("prop2");
         targetModel.setProp3("prop3");
         targetModel.setObj("a");

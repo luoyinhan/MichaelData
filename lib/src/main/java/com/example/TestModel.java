@@ -48,6 +48,6 @@ public class TestModel {
     //用于输出字符串
     @Override
     public String toString() {
-        return "prop1:" + prop1 + "\nprop2:" + prop2 + "\nprop3:" + prop3;
+        return "prop1:" + prop1 + "\nprop2:" + prop2 + "\nprop3:" + prop3 + "\nobj:" + obj.toString();
     }
 }

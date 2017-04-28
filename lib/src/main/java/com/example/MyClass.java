@@ -3,12 +3,15 @@ package com.example;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 一般测试 类
+ */
 public class MyClass {
 
     public static void main(String[] args) {
-//        30 * 24 * 60 * 60 * 1000
+//      30 * 24 * 60 * 60 * 1000
         String end_time = getDate("yyyy-MM-dd", System.currentTimeMillis() + 30l * 24 * 60 * 60 * 1000);//添加 后30天数据
-//        System.out.println(end_time + "  " + Integer.MIN_VALUE);
+//      System.out.println(end_time + "  " + Integer.MIN_VALUE);
         int a = 0x55;
         System.out.println("a=" + intToByte4(a)[0]);
         int i = 3;
