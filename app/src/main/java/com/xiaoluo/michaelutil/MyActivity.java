@@ -37,6 +37,9 @@ public class MyActivity extends AppCompatActivity implements ViewPager.OnPageCha
     private ViewPager mViewPager;
     private FloatingActionButton mFloatingActionButton;
     private NavigationView mNavigationView;
+
+
+
     private Context mContext;
     // TabLayout中的tab标题
     private String[] mTitles;
