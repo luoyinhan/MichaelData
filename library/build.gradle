@@ -3,12 +3,11 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.android.library'
 version = "0.1"
 android {
-    compileSdkVersion 22
-    buildToolsVersion "25.0.0"
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 22
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -31,56 +30,52 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 // 根节点添加
 def siteUrl = 'https://github.com/luoyinhan/MichaelData'    // project homepage
 def gitUrl = 'https://github.com/luoyinhan/MichaelData.git' // project git
 group = "com.dsw.calendar"
+
 //添加脚本 生成pom,javadoc,source
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                name 'Less Code For Android'
-                url siteUrl
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'xiaoluo'
-                        name 'haha.luo'
-                        email '549109809@qq.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
+//install {
+//    repositories.mavenInstaller {
+//        // This generates POM.xml with proper parameters
+//        pom {
+//            project {
+//                packaging 'aar'
+//                name 'Less Code For Android'
+//                url siteUrl
+//                licenses {
+//                    license {
+//                        name 'The Apache Software License, Version 2.0'
+//                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id 'xiaoluo'
+//                        name 'haha.luo'
+//                        email '549109809@qq.com'
+//                    }
+//                }
+//                scm {
+//                    connection gitUrl
+//                    developerConnection gitUrl
+//                    url siteUrl
+//                }
+//            }
+//        }
+//    }
+//}
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
 
-//task javadoc(type: Javadoc) {
-//    source = android.sourceSets.main.java.srcDirs
-//    classpath += project.files(configurations.compile.files,android.getBootClasspath().join(File.pathSeparator))
-//    options.encoding = "UTF-8"
-//}
-//
+
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
@@ -88,6 +83,7 @@ task javadoc(type: Javadoc) {
     destinationDir = file("../javadoc/")
     failOnError false
 }
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
@@ -99,42 +95,42 @@ artifacts {
     archives sourcesJar
 }
 
-android.libraryVariants.all { variant ->
-
-    task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
-        title = "Documentation for Android $android.defaultConfig.versionName b$android.defaultConfig.versionCode"
-        destinationDir = new File("${project.getProjectDir()}/doc/compiled/", variant.baseName)
-        source = variant.javaCompile.source
-
-        ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
-        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
-
-        description "Generates Javadoc for $variant.name."
-
-        options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PRIVATE
-        options.links("http://docs.oracle.com/javase/7/docs/api/");
-        options.links("http://developer.android.com/reference/");
-        exclude '**/BuildConfig.java'
-        exclude '**/R.java'
-    }
-}
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-//    user = "luoyinhan"
-//    key = "170d7c960155902e517d28345985285b11014d8b"
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = "calendar-core"                // project name in jcenter
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
-}
+//android.libraryVariants.all { variant ->
+//
+//    task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
+//        title = "Documentation for Android $android.defaultConfig.versionName b$android.defaultConfig.versionCode"
+//        destinationDir = new File("${project.getProjectDir()}/doc/compiled/", variant.baseName)
+//        source = variant.javaCompile.source
+//
+//        ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+//        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+//
+//        description "Generates Javadoc for $variant.name."
+//
+//        options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PRIVATE
+//        options.links("http://docs.oracle.com/javase/7/docs/api/");
+//        options.links("http://developer.android.com/reference/");
+//        exclude '**/BuildConfig.java'
+//        exclude '**/R.java'
+//    }
+//}
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//bintray {
+////    user = "luoyinhan"
+////    key = "170d7c960155902e517d28345985285b11014d8b"
+//    user = properties.getProperty("bintray.user")
+//    key = properties.getProperty("bintray.apikey")
+//    configurations = ['archives']
+//    pkg {
+//        repo = "maven"
+//        name = "calendar-core"                // project name in jcenter
+//        websiteUrl = siteUrl
+//        vcsUrl = gitUrl
+//        licenses = ["Apache-2.0"]
+//        publish = true
+//    }
+//}
 
 
 

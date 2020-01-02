@@ -19,70 +19,70 @@ import com.xiaoluo.michaelutil.R;
 
 
 /**
- * ��iphone�����ȵĽ��������̰߳�ȫ��View����ֱ�����߳��и��½���
+ * ??iphone?????????????????????View?????????????��??????
  *
  * @author michaelluo
  */
 public class RoundProgressBar extends View {
     /**
-     * ���ʶ��������
+     * ????????????
      */
     private Paint paint;
 
     private Paint smallcicrlPaint;
 
     /**
-     * �ֶ���ɫ
+     * ??????
      */
     private static final int[] SECTION_COLORS = {Color.BLUE, Color.YELLOW, Color.RED};
 
     /**
-     * Բ������ɫ
+     * ????????
      */
     private int roundColor;
 
     /**
-     * Բ�����ȵ���ɫ
+     * ???????????
      */
     private int roundProgressColor;
 
     /**
-     * �м���Ȱٷֱȵ��ַ�������ɫ
+     * ?��??????????????????
      */
     private int textColor;
 
     /**
-     * �м���Ȱٷֱȵ��ַ���������
+     * ?��???????????????????
      */
     private float textSize;
 
     /**
-     * Բ���Ŀ��
+     * ???????
      */
     private float roundWidth;
 
     /**
-     * Ĭ��������
+     * ?????????
      */
     private int max = 100;
 
     /**
-     * ��ǰ����
+     * ???????
      */
     private int progress;
 
     /**
-     * ��ǰ���ý���
+     * ??????????
      */
     private int round = 0;
 
     /**
-     * �Ƿ���ʾ�м�Ľ���
+     * ???????��?????
      */
     private boolean textIsDisplayable;
 
     /**
-     * ���ȵķ��ʵ�Ļ��߿���
+     * ????????????????
      */
     private int style;
 
@@ -115,7 +115,7 @@ public class RoundProgressBar extends View {
         paint = new Paint();
         smallcicrlPaint = new Paint();
         TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RoundProgressBar);
-        // ��ȡ�Զ������Ժ�Ĭ��ֵ
+        // ?????????????????
         roundColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundColor, Color.RED);
         roundProgressColor = mTypedArray.getColor(R.styleable.RoundProgressBar_roundProgressColor, Color.GREEN);
         textColor = mTypedArray.getColor(R.styleable.RoundProgressBar_textColor, Color.BLUE);
@@ -123,7 +123,7 @@ public class RoundProgressBar extends View {
         roundWidth = mTypedArray.getDimension(R.styleable.RoundProgressBar_roundWidth, 20);
         roundWidth = 30;
         max = mTypedArray.getInteger(R.styleable.RoundProgressBar_max, 100);
-        textIsDisplayable = mTypedArray.getBoolean(R.styleable.RoundProgressBar_textIsDisplayable, true);//Ĭ����ʾ����
+        textIsDisplayable = mTypedArray.getBoolean(R.styleable.RoundProgressBar_textIsDisplayable, true);//??????????
         style = mTypedArray.getInt(R.styleable.RoundProgressBar_style, 0);
         mTypedArray.recycle();
     }
@@ -133,31 +133,31 @@ public class RoundProgressBar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         /**
-         * �������Ĵ�Բ��
+         * ????????????
          */
-        int centre = getWidth() / 2; // ��ȡԲ�ĵ�x����
-        int radius = (int) (centre - roundWidth / 2 - 20); // Բ���İ뾶
-        paint.setColor(Color.parseColor("#DDDDDD")); // ����Բ������ɫ
-        paint.setStyle(Paint.Style.STROKE); // ���ÿ���
-        paint.setStrokeWidth(roundWidth); // ����Բ���Ŀ��
-        paint.setAntiAlias(true); // �������
+        int centre = getWidth() / 2; // ???????x????
+        int radius = (int) (centre - roundWidth / 2 - 20); // ??????
+        paint.setColor(Color.parseColor("#DDDDDD")); // ????????????
+        paint.setStyle(Paint.Style.STROKE); // ???????
+        paint.setStrokeWidth(roundWidth); // ???????????
+        paint.setAntiAlias(true); // ???????
         PathEffect effects = new DashPathEffect(new float[]{5, 5, 5, 5}, 1);
         paint.setPathEffect(effects);
         paint.setShader(null);
-        RectF oval = new RectF(centre - radius, centre - radius, (centre + radius), centre + radius); // ���ڶ����Բ������״�ʹ�С�Ľ���
+        RectF oval = new RectF(centre - radius, centre - radius, (centre + radius), centre + radius); // ???????????????????��?????
         if (isDrawBG) {
-            // canvas.drawCircle(centre, centre, radius, paint); // ����Բ��
-            canvas.drawArc(oval, 150, 240 * 1, false, paint); // ���ݽ��Ȼ�Բ��
+            // canvas.drawCircle(centre, centre, radius, paint); // ???????
+            canvas.drawArc(oval, 150, 240 * 1, false, paint); // ???????????
         }
         /**
-         * ��СԲ����
+         * ??��?????
          */
-        smallcicrlPaint.setColor(Color.parseColor("#DDDDDD")); // ����Բ������ɫ
-        smallcicrlPaint.setStyle(Paint.Style.STROKE); // ���ÿ���
-        smallcicrlPaint.setStrokeWidth(5); // ����Բ���Ŀ��
-        smallcicrlPaint.setAntiAlias(true); // �������
+        smallcicrlPaint.setColor(Color.parseColor("#DDDDDD")); // ????????????
+        smallcicrlPaint.setStyle(Paint.Style.STROKE); // ???????
+        smallcicrlPaint.setStrokeWidth(5); // ???????????
+        smallcicrlPaint.setAntiAlias(true); // ???????
         int width = 800;
-        //���ݸ�����Ļ�ߴ�
+        //?????????????
         if (width < 720) {
             width = 10;
         } else {
@@ -165,28 +165,28 @@ public class RoundProgressBar extends View {
         }
         RectF smalloval = new RectF(centre - radius + width, centre - radius + width, (centre + radius - width), centre + radius - width);
         // canvas.drawCircle(centre, centre, radius - 25, smallcicrlPaint);
-        // ����Բ��
-        canvas.drawArc(smalloval, 150, 240 * 1, false, smallcicrlPaint); // ���ݽ��Ȼ�Բ��
+        // ???????
+        canvas.drawArc(smalloval, 150, 240 * 1, false, smallcicrlPaint); // ???????????
         /**
-         * �����Ȱٷֱ�
+         * ?????????
          */
         paint.setStrokeWidth(0);
         paint.setColor(textColor);
         paint.setTextSize(textSize);
-        paint.setTypeface(Typeface.DEFAULT_BOLD); // ��������
+        paint.setTypeface(Typeface.DEFAULT_BOLD); // ????????
         int percent = (int) (((float) progress / (float) max) * 100);
-//        �м�Ľ��Ȱٷֱȣ���ת����float�ڽ��г������㣬��Ȼ��Ϊ0
+//        ?��????????????????float????��?????????????0
         float textWidth = paint.measureText(percent + "%");
-//        ���������ȣ�������Ҫ��������Ŀ��������Բ���м�
+//        ???????????????????????????????????????��?
         if (textIsDisplayable && percent != 0 && style == STROKE) {
             paint.setTextSize(80);
             canvas.drawText(percent + "%", centre - textWidth * 2,
-                    centre + textSize / 2, paint); // �������Ȱٷֱ�
+                    centre + textSize / 2, paint); // ???????????
         }
         /**
-         * ��Բ�� ����Բ���Ľ���
+         * ????? ????????????
          */
-        // ���ý���Ч��
+        // ???????��??
         SweepGradient lg = null;
         // float[] positions = new float[]{0.2f, 0.5f, 0.8f, 1.0f};
         // lg = new LinearGradient(0, 0, 100, 100, SECTION_COLORS, null,
@@ -199,25 +199,25 @@ public class RoundProgressBar extends View {
         if (lg != null) {
             paint.setShader(lg);
         }
-        // ���ý�����ʵ�Ļ��ǿ���
-        paint.setStrokeWidth(roundWidth); // ����Բ���Ŀ��
-        // paint.setColor(roundProgressColor); // ���ý��ȵ���ɫ
+        // ??????????????????
+        paint.setStrokeWidth(roundWidth); // ???????????
+        // paint.setColor(roundProgressColor); // ???????????
         paint.setColor(Color.BLUE);//
         paint.setPathEffect(null);
-        // ���ý��ȵ���ɫ
+        // ???????????
         // RectF oval = new RectF(centre - radius, centre - radius,
-        // (centre + radius), centre + radius); // ���ڶ����Բ������״�ʹ�С�Ľ���
+        // (centre + radius), centre + radius); // ???????????????????��?????
 
         switch (style) {
             case STROKE: {
                 paint.setStyle(Paint.Style.STROKE);
-                canvas.drawArc(oval, 150, 240 * progress / max, false, paint); // ���ݽ��Ȼ�Բ��
+                canvas.drawArc(oval, 150, 240 * progress / max, false, paint); // ???????????
                 break;
             }
             case FILL: {
                 paint.setStyle(Paint.Style.FILL_AND_STROKE);
                 if (progress != 0) {
-                    canvas.drawArc(oval, -90, 360 * progress / max, true, paint); // ���ݽ��Ȼ�Բ��
+                    canvas.drawArc(oval, -90, 360 * progress / max, true, paint); // ???????????
                 }
                 break;
             }
@@ -229,7 +229,7 @@ public class RoundProgressBar extends View {
     }
 
     /**
-     * ���ý��ȵ����ֵ
+     * ????????????
      *
      * @param max
      */
@@ -241,7 +241,7 @@ public class RoundProgressBar extends View {
     }
 
     /**
-     * ��ȡ����.��Ҫͬ��
+     * ???????.??????
      *
      * @return
      */
@@ -250,7 +250,7 @@ public class RoundProgressBar extends View {
     }
 
     /**
-     * ���ý��ȣ���Ϊ�̰߳�ȫ�ؼ������ڿ��Ƕ��ߵ����⣬��Ҫͬ�� ˢ�½������postInvalidate()���ڷ�UI�߳�ˢ��
+     * ?????????????????????????????????????????? ?????????postInvalidate()?????UI??????
      *
      * @param progress
      */
@@ -263,12 +263,12 @@ public class RoundProgressBar extends View {
         }
         if (progress <= max) {
             this.progress = progress;
-            postInvalidate();//�������̵߳���
+            postInvalidate();//????????????
         }
     }
 
     /**
-     * ��ʼloading �����߳��е���
+     * ???loading ????????��???
      */
     public void startProgress(final int lProgress) {
         round = 0;
@@ -288,7 +288,7 @@ public class RoundProgressBar extends View {
         }).start();
     }
 
-    //��ȡԲ����ɫ
+    //?????????
     public int getCricleColor() {
         return roundColor;
     }
